@@ -355,6 +355,28 @@ _backpack = {
 
 // ====================================================================================
 
+_pickARifle = 
+{
+	params ["_unit"];
+
+	_rifLoadouts = 
+	[
+		[["rhs_weap_m38","","","",["rhsgref_5Rnd_762x54_m38",5],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Cyan_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_oli",[["ACE_Chemlight_HiOrange",1,1],["rhsgref_5Rnd_762x54_m38",9,5]]],[],"H_Cap_oli","UK3CB_BAF_G_Tactical_Orange",["","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+		[["LOP_Weap_LeeEnfield","","","",["LOP_10rnd_77mm_mag",10],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Orange_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["LOP_10rnd_77mm_mag",5,10]]],[],"H_Cap_red","UK3CB_BAF_G_Tactical_Orange",["","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+		[["rhs_weap_kar98k","","","",["rhsgref_5Rnd_792x57_kar98k",5],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Red_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["rhsgref_5Rnd_792x57_kar98k",10,5]]],[],"H_Cap_red","UK3CB_BAF_G_Tactical_Orange",["","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+		[["Cre8ive_Rfl_CV_557","","","",["Cre8ive_Mag_CV_557_5Rnd",5],[],""],[],[],["Cre8ive_CU_Uniform_Polo_Khaki",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["Cre8ive_Mag_CV_557_5Rnd",10,5]]],[],"H_Cap_oli","UK3CB_BAF_G_Tactical_Orange",["","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+		[["rhs_weap_m38","","","",["rhsgref_5Rnd_762x54_m38",5],[],""],[],[],["Cre8ive_CU_Uniform_Polo_Khaki",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_oli",[["ACE_Chemlight_HiOrange",1,1],["rhsgref_5Rnd_762x54_m38",9,5]]],[],"H_Cap_oli","UK3CB_BAF_G_Tactical_Orange",["","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+		[["LOP_Weap_LeeEnfield","","","",["LOP_10rnd_77mm_mag",10],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Cyan_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["LOP_10rnd_77mm_mag",5,10]]],[],"H_Cap_red","UK3CB_BAF_G_Tactical_Orange",["","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+		[["rhs_weap_kar98k","","","",["rhsgref_5Rnd_792x57_kar98k",5],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Orange_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["rhsgref_5Rnd_792x57_kar98k",10,5]]],[],"H_Cap_red","UK3CB_BAF_G_Tactical_Orange",["","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+		[["Cre8ive_Rfl_CV_557","","","",["Cre8ive_Mag_CV_557_5Rnd",5],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Red_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["Cre8ive_Mag_CV_557_5Rnd",10,5]]],[],"H_Cap_oli","UK3CB_BAF_G_Tactical_Orange",["","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]]
+	];
+
+	_randomLoadout = selectRandom _rifLoadouts;
+
+	_unit setUnitLoadout _randomLoadout;
+
+};
+
 // DEFINE UNIT TYPE LOADOUTS
 // The following blocks of code define loadouts for each type of unit (the unit type
 // is passed to the script in the first variable)
@@ -364,570 +386,139 @@ switch (_typeofUnit) do
 
 // ====================================================================================
 
-// LOADOUT: COMMANDER
-	case "co":
-	{
-		_unit addmagazines [_glriflemag,7];
-		_unit addmagazines [_glriflemag_tr,2];
-		_unit addmagazines [_glmag,3];
-		_unit addmagazines [_glsmokewhite,4];
-		_unit addweapon _glrifle;					//_COrifle
-		_unit addmagazines [_pistolmag,2];
-		_unit addweapon _pistol;
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,2];
-		_unit addmagazines [_smokegrenadegreen,2];
-		_unit addWeapon "Rangefinder";
-		_unit linkItem "ItemGPS";
-		_unit addItem "ACE_microDAGR";
-		["g"] call _backpack;
-	};
-
-// LOADOUT: DEPUTY COMMANDER AND SQUAD LEADER
-	case "dc":
-	{
-		_unit addmagazines [_glriflemag,7];
-		_unit addmagazines [_glriflemag_tr,2];
-		_unit addmagazines [_glmag,3];
-		_unit addmagazines [_glsmokewhite,4];
-		_unit addweapon _glrifle;					//_DCrifle
-		_unit addmagazines [_pistolmag,2];
-		_unit addweapon _pistol;
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,2];
-		_unit addmagazines [_smokegrenadegreen,2];
-		_unit addWeapon "Rangefinder";
-		_unit linkItem "ItemGPS";
-		_unit addItem "ACE_microDAGR";
-		["g"] call _backpack;
-	};
-
-// LOADOUT: MEDIC
-	case "m":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addweapon _carbine;
-		_unit addmagazines [_smokegrenade,4];
-		{_unit addItem _firstaid} forEach [1,2,3,4];
-		_unit linkItem "ItemGPS";
-		_unit addItem "ACE_microDAGR";
-		["m"] call _backpack;
-	};
-
-// LOADOUT: FIRE TEAM LEADER
 	case "ftl":
 	{
-		_unit addmagazines [_glriflemag,7];
-		_unit addmagazines [_glriflemag_tr,2];
-		_unit addmagazines [_glmag,5];
-		_unit addmagazines [_glsmokewhite,4];
-		_unit addweapon _glrifle;					//_FTLrifle
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,2];
-		_unit addmagazines [_smokegrenadegreen,2];
-		_unit addWeapon "Rangefinder";
-		_unit linkItem "ItemGPS";
-		_unit addItem "ACE_microDAGR";
-		["g"] call _backpack;
+		_rifLoadouts = 
+		[
+			[["rhs_weap_svds","","","",["rhs_10Rnd_762x54mmR_7N1",10],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Cyan_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_TacVest_oli",[["ACE_M26_Clacker",1],["rhs_10Rnd_762x54mmR_7N1",5,10],["SmokeShell",2,1],["rhs_mag_rgo",1,1],["ACE_Chemlight_HiOrange",1,1],["DemoCharge_Remote_Mag",1,1]]],[],"H_Booniehat_tan","UK3CB_BAF_G_Tactical_Orange",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["arifle_KA_SKS_F","","","",["10Rnd_M43_762x39_Ball",10],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Red_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_TacVest_khk",[["ACE_M26_Clacker",1],["SmokeShell",2,1],["rhs_mag_rgo",1,1],["ACE_Chemlight_HiOrange",1,1],["DemoCharge_Remote_Mag",1,1],["10Rnd_M43_762x39_Ball",5,10]]],[],"H_Booniehat_tan","UK3CB_BAF_G_Tactical_Orange",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["rhs_weap_m76","","","",["rhsgref_10Rnd_792x57_m76",10],[],""],[],[],["Cre8ive_CU_Uniform_Polo_Khaki",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_TacVest_khk",[["ACE_M26_Clacker",1],["SmokeShell",2,1],["rhs_mag_rgo",1,1],["ACE_Chemlight_HiOrange",1,1],["DemoCharge_Remote_Mag",1,1],["rhsgref_10Rnd_792x57_m76",5,10]]],[],"_Booniehat_tan","UK3CB_BAF_G_Tactical_Orange",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["rhs_weap_svds","","","",["rhs_10Rnd_762x54mmR_7N1",10],[],""],[],[],["Cre8ive_CU_Uniform_Polo_Khaki",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_TacVest_oli",[["ACE_M26_Clacker",1],["rhs_10Rnd_762x54mmR_7N1",5,10],["SmokeShell",2,1],["rhs_mag_rgo",1,1],["ACE_Chemlight_HiOrange",1,1],["DemoCharge_Remote_Mag",1,1]]],[],"H_Booniehat_tan","UK3CB_BAF_G_Tactical_Orange",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["arifle_KA_SKS_F","","","",["10Rnd_M43_762x39_Ball",10],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Cyan_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_TacVest_khk",[["ACE_M26_Clacker",1],["SmokeShell",2,1],["rhs_mag_rgo",1,1],["ACE_Chemlight_HiOrange",1,1],["DemoCharge_Remote_Mag",1,1],["10Rnd_M43_762x39_Ball",5,10]]],[],"H_Booniehat_tan","UK3CB_BAF_G_Tactical_Orange",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["rhs_weap_m76","","","",["rhsgref_10Rnd_792x57_m76",10],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Red_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_TacVest_khk",[["ACE_M26_Clacker",1],["SmokeShell",2,1],["rhs_mag_rgo",1,1],["ACE_Chemlight_HiOrange",1,1],["DemoCharge_Remote_Mag",1,1],["rhsgref_10Rnd_792x57_m76",5,10]]],[],"_Booniehat_tan","UK3CB_BAF_G_Tactical_Orange",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]]
+		];
+	
+		_randomLoadout = selectRandom _rifLoadouts;
+	
+		_unit setUnitLoadout _randomLoadout;
 	};
-
-
-// LOADOUT: AUTOMATIC RIFLEMAN
+	
+	
 	case "ar":
 	{
-		_unit addmagazines [_ARmag,4];
-		_unit addweapon _AR;
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,2];
-		_unit addmagazines [_pistolmag,4];
-		_unit addweapon _pistol;
-		["ar"] call _backpack;
-		_attachments pushback (_bipod1);
+		_rifLoadouts = 
+		[
+			[["rhs_weap_akms","rhs_acc_dtkakm","","",["rhs_30Rnd_762x39mm",30],[],""],[],[],["Cre8ive_CU_Uniform_Sports_TShirt_Black_Brown",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["rhs_30Rnd_762x39mm",4,30]]],[],"H_Bandanna_cbr","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["hlc_rifle_hk33a2","","","",["hlc_30rnd_556x45_b_HK33",30],[],""],[],[],["Cre8ive_CU_Uniform_Sports_TShirt_Brown_Blue",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_blk",[["hlc_30rnd_556x45_b_HK33",4,30]]],[],"H_Bandanna_gry","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["RH_M16a1","","","",["RH_20Rnd_556x45_M855A1",20],[],""],[],[],["Cre8ive_CU_Uniform_Sports_TShirt_Green_Brown",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_oli",[["RH_20Rnd_556x45_M855A1",7,20]]],[],"H_Bandanna_khk","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["rhs_weap_akms","rhs_acc_dtkakm","","",["rhs_30Rnd_762x39mm",30],[],""],[],[],["Cre8ive_CU_Uniform_Sports_TShirt_Green_Brown",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["rhs_30Rnd_762x39mm",4,30]]],[],"H_Bandanna_cbr","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["hlc_rifle_hk33a2","","","",["hlc_30rnd_556x45_b_HK33",30],[],""],[],[],["Cre8ive_CU_Uniform_Sports_TShirt_Black_Brown",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_blk",[["hlc_30rnd_556x45_b_HK33",4,30]]],[],"H_Bandanna_gry","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["RH_M16a1","","","",["RH_20Rnd_556x45_M855A1",20],[],""],[],[],["Cre8ive_CU_Uniform_Sports_TShirt_Brown_Blue",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_oli",[["RH_20Rnd_556x45_M855A1",7,20]]],[],"H_Bandanna_khk","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]]
+		];
+	
+		_randomLoadout = selectRandom _rifLoadouts;
+	
+		_unit setUnitLoadout _randomLoadout;
 	};
-
-// LOADOUT: ASSISTANT AUTOMATIC RIFLEMAN
+	
+	
+	case "rif":
+	{
+		[_unit] call _pickARifle;
+	};
+	
+	
 	case "aar":
 	{
-		_unit addmagazines [_riflemag,7];
-		_unit addmagazines [_riflemag_tr,2];
-		_unit addweapon _rifle;
-		_unit addmagazines [_grenade,2];
-		_unit addmagazines [_mgrenade,2];
-		_unit addmagazines [_smokegrenade,2];
-		_unit addWeapon "Binocular";
-		["aar"] call _backpack;
+		[_unit] call _pickARifle;
+		
+		_items = 
+		[
+			"B_AssaultPack_khk",
+			"B_AssaultPack_cbr",
+			"B_FieldPack_oli",
+			"UK3CB_BAF_B_Kitbag_TAN",
+			"B_TacticalPack_blk",
+			"rhs_assault_umbts"
+		];
+	
+		_randomItem = selectRandom _items;
+		
+		_unit addBackpack _randomItem;
+		
+	};
+	
+	
+	case "lat":
+	{
+		[_unit] call _pickARifle;
+		
+		_items = 
+		[
+			"rhs_weap_rshg2",
+			"rhs_weap_rpg26",
+			"rhs_weap_m72a7",
+			"rhs_weap_M136_hedp"
+		];
+	
+		_randomItem = selectRandom _items;
+		
+		_unit addWeapon _randomItem;
+		
+	};
+	
+	
+	case "mk":
+	{
+		_rifLoadouts = 
+		[
+			[["rhs_weap_m38_rail","","","hlc_optic_ZF95Base",["rhsgref_5Rnd_762x54_m38",5],[],""],[],["rhs_weap_makarov_pm","","","",["rhs_mag_9x18_8_57N181S",8],[],""],["Cre8ive_CU_Uniform_Polo_Khaki",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_oli",[["ACE_Chemlight_HiOrange",1,1],["rhsgref_5Rnd_762x54_m38",8,5],["rhs_mag_9x18_8_57N181S",2,8]]],[],"H_Cap_oli","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["rhs_weap_m24sws_blk","","","hlc_optic_ZF95Base",["rhsusf_5Rnd_762x51_m118_special_Mag",5],[],""],[],["rhsusf_weap_m1911a1","","","",["rhsusf_mag_7x45acp_MHP",7],[],""],["Cre8ive_CU_Uniform_Shirt_Cyan_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["rhsusf_mag_7x45acp_MHP",2,7],["rhsusf_5Rnd_762x51_m993_Mag",7,5],["rhsusf_5Rnd_762x51_m62_Mag",1,5]]],[],"H_Cap_red","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["LOP_Weap_LeeEnfield_railed","","","optic_SOS",["LOP_10rnd_77mm_mag",10],[],""],[],["hgun_Pistol_heavy_02_F","","","",["6Rnd_45ACP_Cylinder",6],[],""],["Cre8ive_CU_Uniform_Shirt_Orange_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["LOP_10rnd_77mm_mag",4,10],["6Rnd_45ACP_Cylinder",3,6]]],[],"H_Cap_red","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["Cre8ive_Rfl_CV_557","","","hlc_optic_ZF95Base",["Cre8ive_Mag_CV_557_5Rnd",5],[],""],[],["rhs_weap_tt33","","","",["rhs_mag_762x25_8",8],[],""],["Cre8ive_CU_Uniform_Shirt_Red_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["Cre8ive_Mag_CV_557_5Rnd",7,5],["rhs_mag_762x25_8",2,8],["Cre8ive_Mag_CV_557_5Rnd_Tracer_Red",1,5]]],[],"H_Cap_oli","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]]
+		];
+
+		_randomLoadout = selectRandom _rifLoadouts;
+
+		_unit setUnitLoadout _randomLoadout;
+	};
+	
+	
+	case "med":
+	{
+		_rifLoadouts = 
+		[
+			[["Cre8ive_Rfl_CV_Goose","","","",["Cre8ive_Mag_2Rnd_Buck",2],[],""],[],[],["Cre8ive_CU_Uniform_Polo_Khaki",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_oli",[["ACE_Chemlight_HiOrange",1,1],["Cre8ive_Mag_2Rnd_Buck",10,2],["Cre8ive_Mag_2Rnd_Slug",4,2],["SmokeShell",2,1],["SmokeShellGreen",1,1]]],["B_TacticalPack_oli",[["ACE_bloodIV",6],["ACE_epinephrine",6],["ACE_fieldDressing",16],["ACE_morphine",14]]],"H_Cap_oli","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["rhs_weap_Izh18","","","",["rhsgref_1Rnd_00Buck",1],[],""],[],["rhs_weap_makarov_pm","","","",["rhs_mag_9x18_8_57N181S",8],[],""],["Cre8ive_CU_Uniform_Shirt_Cyan_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["rhsgref_1Rnd_00Buck",20,1],["rhsgref_1Rnd_Slug",8,1],["rhs_mag_9x18_8_57N181S",3,8]]],["rhsusf_falconii_coy",[["ACE_fieldDressing",16],["ACE_bloodIV",6],["ACE_epinephrine",6],["ACE_morphine",14]]],"H_Cap_red","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["rhs_weap_M590_5RD","","","",["rhsusf_5Rnd_00Buck",5],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Orange_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["rhsusf_5Rnd_00Buck",4,5],["rhsusf_5Rnd_Slug",2,5]]],["rhsusf_falconii_coy",[["ACE_bloodIV",6],["ACE_fieldDressing",16],["ACE_epinephrine",6],["ACE_morphine",14]]],"H_Cap_red","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]]
+		];
+
+		_randomLoadout = selectRandom _rifLoadouts;
+
+		_unit setUnitLoadout _randomLoadout;
+	};
+	
+	
+	case "sg":
+	{
+		_rifLoadouts = 
+		[
+			[["Cre8ive_Rfl_CV_Goose","","","",["Cre8ive_Mag_2Rnd_Buck",2],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Orange_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_oli",[["ACE_Chemlight_HiOrange",1,1],["Cre8ive_Mag_2Rnd_Buck",15,2],["Cre8ive_Mag_2Rnd_Slug",6,2],["SmokeShell",2,1],["SmokeShellGreen",1,1]]],[],"H_Cap_oli","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["rhs_weap_Izh18","","","",["rhsgref_1Rnd_00Buck",1],[],""],[],["rhs_weap_makarov_pm","","","",["rhs_mag_9x18_8_57N181S",8],[],""],["Cre8ive_CU_Uniform_Polo_Khaki",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["rhsgref_1Rnd_00Buck",30,1],["rhsgref_1Rnd_Slug",12,1],["rhs_mag_9x18_8_57N181S",4,8]]],[],"H_Cap_red","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]],
+			[["rhs_weap_M590_5RD","","","",["rhsusf_5Rnd_00Buck",5],[],""],[],[],["Cre8ive_CU_Uniform_Shirt_Cyan_Green",[["FirstAidKit",1],["ACE_fieldDressing",5],["ACE_morphine",5],["ACE_bloodIV_500",1]]],["V_BandollierB_cbr",[["ACE_Chemlight_HiOrange",1,1],["rhsusf_5Rnd_00Buck",6,5],["rhsusf_5Rnd_Slug",3,5]]],[],"H_Cap_red","UK3CB_BAF_G_Tactical_Orange",[],["ItemMap","","","ItemCompass","ItemWatch",""]]
+		];
+
+		_randomLoadout = selectRandom _rifLoadouts;
+
+		_unit setUnitLoadout _randomLoadout;
+	};
+	
+	
+	case "zeus":
+	{	
+		_unit setUnitLoadout [["rhs_weap_m4a1_blockII_M203_d","rhsusf_acc_SF3P556","rhs_acc_perst1ik_ris","optic_Arco_blk_F",["rhs_mag_30Rnd_556x45_M855A1_Stanag",30],["rhs_mag_M433_HEDP",1],""],[],["hgun_P07_khk_F","hlc_muzzle_Octane9","","",["30Rnd_9x21_Red_Mag",30],[],""],["Cre8ive_CU_Uniform_Polo_Khaki",[["ACE_epinephrine",1],["ACE_fieldDressing",8],["ACE_morphine",8],["ACE_bloodIV_250",1]]],["LOP_V_CarrierLite_TAN",[["ACE_bloodIV",2],["SmokeShellBlue",2,1],["rhs_mag_m67",4,1],["ACE_Chemlight_HiYellow",1,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",5,30]]],["UK3CB_BAF_B_Kitbag_TAN",[["optic_Nightstalker",1],["rhs_mag_M433_HEDP",7,1],["30Rnd_9x21_Red_Mag",2,30],["UK3CB_BAF_SmokeShellBlue",2,1],["rhs_mag_30Rnd_556x45_M855A1_Stanag",5,30],["rhs_mag_30Rnd_556x45_M855_Stanag_Tracer_Red",3,30]]],"LOP_H_Beanie_tan","",["Laserdesignator","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","",""]];
 	};
 
-// LOADOUT: RIFLEMAN (AT)
-	case "rat":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,2];
-		["rat"] call _backpack;
-		(unitBackpack _unit) addMagazineCargoGlobal [_RATmag,1];
-		_unit addweapon _RAT;
-	};
-
-// LOADOUT: DESIGNATED MARKSMAN
-	case "dm":
-	{
-		_unit addmagazines [_DMriflemag,7];
-		_unit addweapon _DMrifle;
-		_unit addmagazines [_grenade,2];
-		_unit addmagazines [_mgrenade,2];
-		_unit addmagazines [_smokegrenade,2];
-		_unit addmagazines [_pistolmag,3];
-		_unit addweapon _pistol;
-		["dm"] call _backpack;
-		_attachments = [_attach1,_scope2];
-	};
-
-// LOADOUT: MEDIUM MG GUNNER
-	case "mmgg":
-	{
-		_unit addmagazines [_MMGmag,1];
-		_unit addweapon _MMG;
-		_unit addmagazines [_MMGmag,2];
-		_unit addmagazines [_smokegrenade,2];
-		_unit addmagazines [_pistolmag,4];
-		_unit addweapon _pistol;
-		["mmg"] call _backpack;
-		_attachments pushback (_bipod1);
-	};
-
-// LOADOUT: MEDIUM MG ASSISTANT GUNNER
-	case "mmgag":
-	{
-		_unit addmagazines [_riflemag,7];
-		_unit addmagazines [_riflemag_tr,2];
-		_unit addweapon _rifle;
-		_unit addWeapon "Rangefinder";
-		_unit addmagazines [_grenade,2];
-		_unit addmagazines [_mgrenade,2];
-		_unit addmagazines [_smokegrenade,2];
-		["mmgag"] call _backpack;
-	};
-
-// LOADOUT: HEAVY MG GUNNER
-	case "hmgg":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,1];
-		["hmgg"] call _backpack;
-	};
-
-// LOADOUT: HEAVY MG ASSISTANT GUNNER
-	case "hmgag":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addWeapon "Rangefinder";
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,1];
-		["hmgag"] call _backpack;
-	};
-
-// LOADOUT: MEDIUM AT GUNNER
-	case "matg":
-	{
-		["matg"] call _backpack;
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addmagazines [_smokegrenade,2];
-		_unit addweapon _carbine;
-		_unit addweapon _MAT;
-	};
-
-// LOADOUT: MEDIUM AT ASSISTANT GUNNER
-	case "matag":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addWeapon "Rangefinder";;
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,2];
-		["matag"] call _backpack;
-	};
-
-// LOADOUT: HEAVY AT GUNNER
-	case "hatg":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addweapon _carbine;
-		["hatg"] call _backpack;
-		_unit addWeapon _HAT;
-	};
-
-// LOADOUT: HEAVY AT ASSISTANT GUNNER
-	case "hatag":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addWeapon "Rangefinder";
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,1];
-		["hatag"] call _backpack;
-	};
-
-// LOADOUT: MORTAR GUNNER
-	case "mtrg":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,1];
-		["mtrg"] call _backpack;
-	};
-
-// LOADOUT: MORTAR ASSISTANT GUNNER
-	case "mtrag":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,1];
-		_unit addWeapon "Rangefinder";
-		["mtrag"] call _backpack;
-	};
-
-// LOADOUT: MEDIUM SAM GUNNER
-	case "msamg":
-	{
-		["msamg"] call _backpack;
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addmagazines [_smokegrenade,1];
-		_unit addmagazines [_grenade,1];
-		_unit addweapon _SAM;
-	};
-
-// LOADOUT: MEDIUM SAM ASSISTANT GUNNER
-	case "msamag":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addWeapon "Rangefinder";
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_smokegrenade,1];
-		["msamag"] call _backpack;
-	};
-
-// LOADOUT: HEAVY SAM GUNNER
-	case "hsamg":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,1];
-		["hsamg"] call _backpack;
-	};
-
-// LOADOUT: HEAVY SAM ASSISTANT GUNNER
-	case "hsamag":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addWeapon "Rangefinder";
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_smokegrenade,1];
-		["hsamag"] call _backpack;
-	};
-
-// LOADOUT: SNIPER
-	case "sn":
-	{
-		_unit addmagazines [_SNrifleMag,9];
-		_unit addweapon _SNrifle;
-		_unit addmagazines [_pistolmag,4];
-		_unit addweapon _pistol;
-		_unit addmagazines [_smokegrenade,2];
-		_attachments = [_scope3];
-		_unit addItem "ACE_Kestrel4500";
-	};
-
-// LOADOUT: SPOTTER
-	case "sp":
-	{
-		_unit addmagazines [_glriflemag,7];
-		_unit addmagazines [_glriflemag_tr,2];
-		_unit addmagazines [_glmag,3];
-		_unit addmagazines [_glsmokewhite,4];
-		_unit addweapon _glrifle;					//_COrifle
-		_unit addmagazines [_smokegrenade,2];
-		_unit addWeapon "Rangefinder";
-		_unit linkItem "ItemGPS";
-		_unit addItem "ACE_microDAGR";
-	};
-
-// LOADOUT: VEHICLE COMMANDER
-	case "vc":
-	{
-		_unit addmagazines [_smgmag,5];
-		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
-		_unit addWeapon "Rangefinder";
-	};
-
-// LOADOUT: VEHICLE DRIVER
-	case "vd":
-	{
-		_unit addmagazines [_smgmag,5];
-		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
-		["cc"] call _backpack;
-	};
-
-// LOADOUT: VEHICLE GUNNER
-	case "vg":
-	{
-		_unit addmagazines [_smgmag,5];
-		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
-	};
-
-// LOADOUT: AIR VEHICLE PILOTS
-	case "pp":
-	{
-		_unit addmagazines [_smgmag,5];
-		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
-	};
-
-// LOADOUT: AIR VEHICLE CREW CHIEF
-	case "pcc":
-	{
-		_unit addmagazines [_smgmag,5];
-		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
-		["cc"] call _backpack;
-	};
-
-// LOADOUT: AIR VEHICLE CREW
-	case "pc":
-	{
-		_unit addmagazines [_smgmag,5];
-		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
-	};
-
-// LOADOUT: ENGINEER (DEMO)
-	case "eng":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addweapon _carbine;
-		_unit addmagazines [_smokegrenade,2];
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_satchel,2];
-		_unit addItem "MineDetector";
-		_unit addItem "ACE_M26_Clacker";
-		_unit addItem "ACE_DefusalKit";
-		_unit addItem "ACE_wirecutter";
-		_unit addWeapon "Binocular";
-		["eng"] call _backpack;
-	};
-
-// LOADOUT: ENGINEER (MINES)
-	case "engm":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addweapon _carbine;
-		_unit addmagazines [_smokegrenade,2];
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit addmagazines [_APmine2,2];
-		_unit addItem "MineDetector";
-		_unit addItem "ACE_M26_Clacker";
-		_unit addItem "ACE_DefusalKit";
-		_unit addItem "ACE_wirecutter";
-		_unit addWeapon "Binocular";
-		["engm"] call _backpack;
-	};
-
-// LOADOUT: UAV OPERATOR
-	case "uav":
-	{
-		_unit addmagazines [_smgmag,5];
-		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
-		_unit addmagazines [_grenade,1];
-		_unit addmagazines [_mgrenade,1];
-		_unit linkItem _uavterminal;
-		["uav"] call _backpack;
-		_unit addMagazines ["Laserbatteries",4];	// Batteries added for the F3 UAV Recharging component
-	};
-
-// LOADOUT: Diver
-	case "div":
-	{
-		_unit addmagazines [_diverMag1,4];
-		_unit addmagazines [_diverMag2,3];
-		_unit addweapon _diverWep;
-		_unit addmagazines [_grenade,3];
-		_unit addmagazines [_mgrenade,3];
-		_unit addmagazines [_smokegrenade,3];
-		_attachments = [_attach1,_scope1,_silencer1];
-		["div"] call _backpack;
-	};
-
-// LOADOUT: RIFLEMAN
-	case "r":
-	{
-		_unit addmagazines [_riflemag,7];
-		_unit addmagazines [_riflemag_tr,2];
-		_unit addweapon _rifle;
-		_unit addmagazines [_grenade,3];
-		_unit addmagazines [_mgrenade,3];
-		_unit addmagazines [_smokegrenade,3];
-		["r"] call _backpack;
-	};
-
-// LOADOUT: CARABINEER
-	case "car":
-	{
-		_unit addmagazines [_carbinemag,7];
-		_unit addmagazines [_carbinemag_tr,2];
-		_unit addweapon _carbine;
-		_unit addmagazines [_grenade,3];
-		_unit addmagazines [_mgrenade,3];
-		_unit addmagazines [_smokegrenade,3];
-		["car"] call _backpack;
-	};
-
-// LOADOUT: SUBMACHINEGUNNER
-	case "smg":
-	{
-		_unit addmagazines [_smgmag,7];
-		_unit addweapon _smg;
-		_unit addmagazines [_grenade,3];
-		_unit addmagazines [_mgrenade,3];
-		_unit addmagazines [_smokegrenade,3];
-		["smg"] call _backpack;
-	};
-
-// LOADOUT: GRENADIER
-	case "gren":
-	{
-		_unit addmagazines [_glriflemag,7];
-		_unit addmagazines [_glriflemag_tr,2];
-		_unit addweapon _glrifle;
-		_unit addmagazines [_glmag,6];
-		_unit addmagazines [_glsmokewhite,2];
-		_unit addmagazines [_grenade,3];
-		_unit addmagazines [_mgrenade,3];
-		_unit addmagazines [_smokegrenade,2];
-		["g"] call _backpack;
-	};
-
-// CARGO: CAR - room for 10 weapons and 50 cargo items
-	case "v_car":
-	{
-		clearWeaponCargoGlobal _unit;
-		clearMagazineCargoGlobal _unit;
-		clearItemCargoGlobal _unit;
-		clearBackpackCargoGlobal _unit;
-		_unit addWeaponCargoGlobal [_carbine, 2];
-		_unit addMagazineCargoGlobal [_riflemag, 8];
-		_unit addMagazineCargoGlobal [_glriflemag, 8];
-		_unit addMagazineCargoGlobal [_carbinemag, 10];
-		_unit addMagazineCargoGlobal [_armag, 5];
-		_unit addMagazineCargoGlobal [_ratmag, 1];
-		_unit addMagazineCargoGlobal [_grenade, 4];
-		_unit addMagazineCargoGlobal [_smokegrenade, 4];
-		_unit addMagazineCargoGlobal [_smokegrenadegreen, 2];
-		_unit addMagazineCargoGlobal [_glmag, 4];
-		_unit addMagazineCargoGlobal [_glsmokewhite, 4];
-		_unit addItemCargoGlobal ["ACE_fieldDressing", 20];
-		_unit addItemCargoGlobal ["ACE_morphine", 10];
-		_unit addItemCargoGlobal ["ACE_epinephrine", 10];
-		_unit addItemCargoGlobal ["ACE_bloodIV", 5];
-	};
-
-// CARGO: TRUCK - room for 50 weapons and 200 cargo items
-	case "v_tr":
-	{
-		clearWeaponCargoGlobal _unit;
-		clearMagazineCargoGlobal _unit;
-		clearItemCargoGlobal _unit;
-		clearBackpackCargoGlobal _unit;
-		_unit addWeaponCargoGlobal [_carbine, 10];
-		_unit addMagazineCargoGlobal [_riflemag, 40];
-		_unit addMagazineCargoGlobal [_glriflemag, 40];
-		_unit addMagazineCargoGlobal [_carbinemag, 40];
-		_unit addMagazineCargoGlobal [_armag, 22];
-		_unit addMagazineCargoGlobal [_ratmag, 6];
-		_unit addMagazineCargoGlobal [_grenade, 12];
-		_unit addmagazineCargoGlobal [_mgrenade,12];
-		_unit addMagazineCargoGlobal [_smokegrenade, 12];
-		_unit addMagazineCargoGlobal [_smokegrenadegreen, 4];
-		_unit addMagazineCargoGlobal [_glmag, 12];
-		_unit addMagazineCargoGlobal [_glsmokewhite, 12];
-		_unit addItemCargoGlobal ["ACE_fieldDressing", 20];
-		_unit addItemCargoGlobal ["ACE_morphine", 10];
-		_unit addItemCargoGlobal ["ACE_epinephrine", 10];
-		_unit addItemCargoGlobal ["ACE_bloodIV", 5];
-	};
-
-// CARGO: IFV - room for 10 weapons and 100 cargo items
-	case "v_ifv":
-	{
-		clearWeaponCargoGlobal _unit;
-		clearMagazineCargoGlobal _unit;
-		clearItemCargoGlobal _unit;
-		clearBackpackCargoGlobal _unit;
-		_unit addWeaponCargoGlobal [_carbine, 4];
-		_unit addMagazineCargoGlobal [_riflemag, 20];
-		_unit addMagazineCargoGlobal [_glriflemag, 20];
-		_unit addMagazineCargoGlobal [_carbinemag, 20];
-		_unit addMagazineCargoGlobal [_armag, 8];
-		_unit addMagazineCargoGlobal [_ratmag, 2];
-		_unit addMagazineCargoGlobal [_grenade, 8];
-		_unit addmagazineCargoGlobal [_mgrenade,8];
-		_unit addMagazineCargoGlobal [_smokegrenade, 8];
-		_unit addMagazineCargoGlobal [_smokegrenadegreen, 2];
-		_unit addMagazineCargoGlobal [_glmag, 8];
-		_unit addMagazineCargoGlobal [_glsmokewhite, 4];
-		_unit addItemCargoGlobal ["ACE_fieldDressing", 20];
-		_unit addItemCargoGlobal ["ACE_morphine", 10];
-		_unit addItemCargoGlobal ["ACE_epinephrine", 10];
-		_unit addItemCargoGlobal ["ACE_bloodIV", 5];
-	};
 
 // CRATE: Small, ammo for 1 fireteam
 	case "crate_small":
@@ -936,21 +527,18 @@ switch (_typeofUnit) do
 		clearMagazineCargoGlobal _unit;
 		clearItemCargoGlobal _unit;
 		clearBackpackCargoGlobal _unit;
-		_unit addMagazineCargoGlobal [_riflemag, 5];
-		_unit addMagazineCargoGlobal [_glriflemag, 5];
-		_unit addMagazineCargoGlobal [_armag, 5];
-		_unit addMagazineCargoGlobal [_carbinemag, 5];
-		_unit addMagazineCargoGlobal [_glmag, 5];
-		_unit addMagazineCargoGlobal [_glsmokewhite, 4];
-		_unit addMagazineCargoGlobal [_ratmag, 2];
-		_unit addMagazineCargoGlobal [_grenade, 8];
-		_unit addMagazineCargoGlobal [_mgrenade, 8];
-		_unit addMagazineCargoGlobal [_smokegrenade, 8];
-		_unit addMagazineCargoGlobal [_smokegrenadegreen, 2];
-		_unit addItemCargoGlobal ["ACE_fieldDressing", 20];
-		_unit addItemCargoGlobal ["ACE_morphine", 10];
-		_unit addItemCargoGlobal ["ACE_epinephrine", 10];
-		_unit addItemCargoGlobal ["ACE_bloodIV", 5];
+		
+		_unit addItemCargoGlobal ["ACE_fieldDressing", 1];
+		_unit addItemCargoGlobal ["ACE_epinephrine", 2];
+		_unit addItemCargoGlobal ["ACE_Banana", 1];
+		_unit addItemCargoGlobal ["Chemlight_green", 1];
+		_unit addItemCargoGlobal ["Chemlight_blue", 1];
+		_unit addItemCargoGlobal ["rhs_weap_rsp30_red", 4];
+		_unit addItemCargoGlobal ["rhs_mag_rsp30_red", 12];
+		_unit addItemCargoGlobal ["rhs_weap_rsp30_green", 2];
+		_unit addItemCargoGlobal ["rhs_mag_rsp30_green", 6];
+		_unit addItemCargoGlobal ["rhs_weap_rsp30_white", 3];
+		_unit addItemCargoGlobal ["rhs_mag_rsp30_white", 9];
 };
 
 // CRATE: Medium, ammo for 1 squad
@@ -960,46 +548,18 @@ switch (_typeofUnit) do
 		clearMagazineCargoGlobal _unit;
 		clearItemCargoGlobal _unit;
 		clearBackpackCargoGlobal _unit;
-		_unit addMagazineCargoGlobal [_riflemag, 15];
-		_unit addMagazineCargoGlobal [_glriflemag, 20];
-		_unit addMagazineCargoGlobal [_armag, 15];
-		_unit addMagazineCargoGlobal [_carbinemag, 20];
-		_unit addMagazineCargoGlobal [_glmag, 20];
-		_unit addMagazineCargoGlobal [_glsmokewhite,16];
-		_unit addMagazineCargoGlobal [_ratmag, 6];
-		_unit addMagazineCargoGlobal [_grenade, 25];
-		_unit addMagazineCargoGlobal [_mgrenade, 25];
-		_unit addMagazineCargoGlobal [_smokegrenade, 25];
-		_unit addMagazineCargoGlobal [_smokegrenadegreen, 6];
-		_unit addItemCargoGlobal ["ACE_fieldDressing", 100];
-		_unit addItemCargoGlobal ["ACE_morphine", 50];
-		_unit addItemCargoGlobal ["ACE_epinephrine", 25];
-		_unit addItemCargoGlobal ["ACE_bloodIV", 10];
-};
-
-// CRATE: Large, ammo for 1 platoon
-	case "crate_large":
-{
-		clearWeaponCargoGlobal _unit;
-		clearMagazineCargoGlobal _unit;
-		clearItemCargoGlobal _unit;
-		clearBackpackCargoGlobal _unit;
-		_unit addMagazineCargoGlobal [_riflemag, 45];
-		_unit addMagazineCargoGlobal [_glriflemag, 60];
-		_unit addMagazineCargoGlobal [_armag, 45];
-		_unit addMagazineCargoGlobal [_carbinemag, 60];
-		_unit addMagazineCargoGlobal [_glmag, 60];
-		_unit addMagazineCargoGlobal [_glsmokewhite,50];
-		_unit addMagazineCargoGlobal [_ratmag, 20];
-		_unit addMagazineCargoGlobal [_grenade, 75];
-		_unit addMagazineCargoGlobal [_mgrenade, 75];
-		_unit addMagazineCargoGlobal [_smokegrenade, 75];
-		_unit addMagazineCargoGlobal [_smokegrenadegreen, 20];
-		_unit addItemCargoGlobal ["ACE_fieldDressing", 150];
-		_unit addItemCargoGlobal ["ACE_morphine", 75];
-		_unit addItemCargoGlobal ["ACE_epinephrine", 50];
-		_unit addItemCargoGlobal ["ACE_bloodIV", 25];
-
+		
+		_unit addItemCargoGlobal ["ACE_fieldDressing", 2];
+		_unit addItemCargoGlobal ["ACE_epinephrine", 1];
+		_unit addItemCargoGlobal ["rhs_mag_m69", 1];
+		_unit addItemCargoGlobal ["rhs_mag_rdg2_black", 2];
+		_unit addItemCargoGlobal ["Chemlight_blue", 1];
+		_unit addItemCargoGlobal ["rhs_weap_rsp30_red", 8];
+		_unit addItemCargoGlobal ["rhs_mag_rsp30_red", 24];
+		_unit addItemCargoGlobal ["rhs_weap_rsp30_green", 4];
+		_unit addItemCargoGlobal ["rhs_mag_rsp30_green", 12];
+		_unit addItemCargoGlobal ["rhs_weap_rsp30_white", 6];
+		_unit addItemCargoGlobal ["rhs_mag_rsp30_white", 18];
 };
 
 // LOADOUT: DEFAULT/UNDEFINED (use RIFLEMAN)
@@ -1027,7 +587,6 @@ if !(_isMan) exitWith {};
 // ====================================================================================
 
 // Handle weapon attachments
-#include "f_assignGear_attachments.sqf";
 
 // ====================================================================================
 

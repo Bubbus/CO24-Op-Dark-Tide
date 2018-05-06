@@ -394,6 +394,7 @@ case "smg":
 		_unit addItemCargoGlobal ["rhsusf_weap_glock17g4", 6];
 		
 		_unit addItemCargoGlobal ["FHQ_optic_AIM", 2];
+		_unit addItemCargoGlobal ["acc_flashlight", 6];
 		_unit addItemCargoGlobal ["ACE_CableTie", 12];
 		_unit addItemCargoGlobal ["ACE_Chemlight_HiOrange", 12];
 		_unit addItemCargoGlobal ["ACE_Chemlight_HiWhite", 12];
@@ -468,8 +469,13 @@ case "smg":
 		clearItemCargoGlobal _unit;
 		clearBackpackCargoGlobal _unit;
 		
-		_unit addItemCargoGlobal ["ACRE_PRC343", 12];
+		_unit addItemCargoGlobal ["ACRE_PRC343", 18];
 		_unit addItemCargoGlobal ["ACRE_PRC152", 4];
+		
+		_unit addItemCargoGlobal ["bv_FlashLight", 8];
+		_unit addItemCargoGlobal ["DemoCharge_Remote_Mag", 4];
+		_unit addItemCargoGlobal ["SatchelCharge_Remote_Mag", 4];
+		_unit addItemCargoGlobal ["ACE_M26_Clacker", 8];
 		
 		_unit addItemCargoGlobal ["V_Chestrig_oli", 4];
 		_unit addItemCargoGlobal ["H_Cap_oli", 4];
