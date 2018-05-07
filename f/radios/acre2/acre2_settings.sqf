@@ -22,7 +22,7 @@ f_radios_settings_acre2_longRange = [];
 
 // Unit types you want to give an extra long-range radio
 // E.G: ["co", "m"] would give the CO and all medics an extra long-range radios
-f_radios_settings_acre2_extraRadios = [];
+f_radios_settings_acre2_extraRadios = ["zeus"];
 
 // Unit types you want to give a backpack radio
 // I'd recommend this is only used for Pilots and FAC (you'll need to sort out a separate FAC loadout in your gearscript, I'd recommend using the "UAV" unit type defined below.)
@@ -89,11 +89,11 @@ f_radios_settings_acre2_sr_groups_opfor = f_radios_settings_acre2_sr_groups_bluf
 f_radios_settings_acre2_sr_groups_indfor = f_radios_settings_acre2_sr_groups_blufor;
 
 f_radios_settings_acre2_lr_groups_blufor = [
-    ["GRND COMMAND 1",    ["ADAM","BARNEY","COLIN","BOSS","ZEUS","MMG1","HMG1","MAT1","HAT1","MTR1","MSAM1","HSAM1","ST1","DT1"]],
-    ["GRND COMMAND 2",    ["IFV1","IFV2","IFV3","IFV4","IFV5","IFV6","IFV7","IFV8","TNK1"]],
+    ["GRND COMMAND 1",    ["ADAM","BARNEY","COLIN","BOSS","wads","MMG1","HMG1","MAT1","HAT1","MTR1","MSAM1","HSAM1","ST1","DT1"]],
+    ["GRND COMMAND 2",    ["wasd","IFV2","IFV3","IFV4","IFV5","IFV6","IFV7","IFV8","TNK1"]],
     ["AIR",  ["TH1","TH2","TH3","T4","TH5","TH6","TH7","TH8","AH1"]],
     ["FAC",	 []],
-    ["ALPHA SQUAD",     ["ASL","A1","A2","A3"]],
+    ["Cool kids",     ["ZEUS"]],
     ["BRAVO SQUAD",  ["BSL","B1","B2","B3"]],
     ["CHARLIE SQUAD",     ["CSL","C1","C2","C3"]],
     ["Hotel",    []],

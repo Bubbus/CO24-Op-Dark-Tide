@@ -10,6 +10,9 @@ if (!isDedicated && (isNull player)) then
 };
 
 params ["_unit","_corpse"];
+
+if (!local _unit) exitWith{};
+
 if (!f_var_JIP_JIPMenu && isNull _corpse) exitWith {}; // If no corpse exists the player is spawned for the first time.
 if (time < 10 && isNull _corpse) exitWith {}; //if not a JIP exit out
 
@@ -27,9 +30,27 @@ if ((time < 10) || (isNull _corpse)) exitWith {
 };
 if (!ca_respawningroup) then {[player] join grpNull;};
 // Do f3 assign radio and gear
-_loadout = (_unit getVariable "f_var_assignGear");
-_unit setVariable ["f_var_assignGear_done",false,true];
-[_loadout,player] call f_fnc_assignGear;
+//_loadout = (_unit getVariable "f_var_assignGear");
+//_unit setVariable ["f_var_assignGear_done",false,true];
+//[_loadout,player] call f_fnc_assignGear;
+//_unit setUnitLoadout (getUnitLoadout _corpse);
+
+_oldLoadout = missionNamespace getVariable ["ca_oldLoadout", []];
+
+if (_oldLoadout isEqualTo []) then
+{
+	// Do f3 assign radio and gear
+	_loadout = (_unit getVariable "f_var_assignGear");
+	_unit setVariable ["f_var_assignGear_done",false,true];
+	[_loadout,player] call f_fnc_assignGear;
+}
+else
+{
+	_unit setUnitLoadout _oldLoadout;
+};
+
+missionNamespace getVariable ["ca_oldLoadout", nil];
+
 [] execVM "f\radios\radio_init.sqf";
 
 if (typeof _unit != "seagull" && {f_var_JIP_RemoveCorpse && !isNull _corpse}) then {
